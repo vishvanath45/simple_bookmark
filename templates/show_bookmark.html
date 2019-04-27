@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block body %}
+<h3>Bookmark of {{author}}</h3>
+<ol type="1">
+    {% for i in list1 %}
+    <li>
+        <a href ={{ i }} target="_blank"> {{ i }}</a>
+    </li>
+    {% endfor %}
+{% endblock body %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block body %}
+        <h2>Pocket online!</h2>
+        <p>- No more log-in or installing app or extension</p>
+        <p>- Directly dump the bookmark over here</p>
+        <p>- Bookmarks are identifiable using author name</p>
+        <p>- You can use this service anonymously</p>
+        <p>- This service will remain up forever</p>
+        <p>- In case of getting dump of your bookmark data or feature request contact <a href="http://vishvanath45.github.io/"> @vishvanath45</a>.</p>
+        <h3><a href={{url_for('form')}}>Add Bookmark</a></h3>
+        <h3>Browse by User </h3>
+
+        {% for name in author %}
+        <a href ="{{ url_for('show_bookmark', word=name) }}">{{name}}</a> | 
+        {% endfor %}
+{% endblock body%}
