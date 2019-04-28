@@ -10,6 +10,7 @@ flask = "*"
 flask-wtf = "*"
 flask-redis = "*"
 urllib2 = "*"
+beautifulsoup4 = "*"
 
 [requires]
 python_version = "3.6"
