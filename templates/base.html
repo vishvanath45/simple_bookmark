@@ -4,13 +4,29 @@
         <title>
          Simple Bookmark
         </title>
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet">
+        <style>
+            body {
+                font-family: 'Ubuntu Mono', monospace;
+            }
+        </style>
     </head>
     <body>
         <div style="width:500px; background-color:#f5f5f5; border:solid 1px #cccccc; padding:5px;">
             <div style="float:left">Simple Bookmark</div>
-            <div style="float:right"><a href={{ url_for('main') }}>Home</a> | <a href={{url_for('form')}}>Add Bookmark</a> </div>
+            <div style="float:right"><a href={{ url_for('main') }}>Home</a> | <a href={{url_for('form')}}>Add Bookmark</a> | <a href={{url_for('login')}}>login/logout</a> | <a href={{url_for('signup')}}>Register</a></div>
             <div style="clear:both"></div>
         </div>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+
         {% block body %}
         {% endblock body %}
     </body>

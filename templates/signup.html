@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block body %}
+<br>
+    <div style="width:500px; background-color:#f5f5f5; border:solid 1px #cccccc; padding:5px;">
+
+
+    <form action ="{{ url_for('signup')}}" method="post">
+        {{ signupform.csrf_token }}
+        <p>
+            <li>Only existing user can make new users sign up.<br>
+            <li>Existing User has to enter his/her passphrase, along with new user entering his/her choosen passphrase.<br>
+            <li>This is developed on idea, that is project is close and small project and I want people who know each other F2F only get invited to use this platform.<br><br>
+            <i>THIS SYSTEM IS BASED ON TRUST.<i>
+        <p>
+            <small>Do not worry, Your password are saved using SHA256 hash with salt, even the developer of this project does not get to see your password, unlike <a href= "https://krebsonsecurity.com/2019/03/facebook-stored-hundreds-of-millions-of-user-passwords-in-plain-text-for-years/">faceb00k</a></small>
+        <br>
+        <br>
+        Enter Existing User's Passphrase: {{ signupform.existing_passphrase }}
+        <br>
+        <br>
+        Enter New User's Passphrase: {{ signupform.new_passphrase }}
+        <br>
+        <br>
+        <button type="submit"><span>Save</span></button>
+    </form>
+
+    </div>
+{% endblock body%}
