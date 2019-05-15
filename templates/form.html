@@ -1,10 +1,20 @@
 {% extends 'base.html' %}
 {% block body %}
 <br>
+
     <div style="width:500px; background-color:#f5f5f5; border:solid 1px #cccccc; padding:5px;">
 
 
-    <form action ="{{ url_for('form')}}" method="post">
+    <h2>Click a group or make one!</h2>
+
+    {% for name in author %}
+    <a title="Click to choose this user" href="#" onclick="hideshow('{{name}}');return false;">{{name}}</a> |
+    {% endfor %}
+    <a title="Click to choose this user" href="#" onclick="hideshow('');return false;">Create New!</a>
+    <br>
+    <br>
+    <br>
+    <form id="input_form" action ="{{ url_for('form')}}" method="post">
         {{ bm_form.csrf_token }}
         {{bm_form.link.label}}: {{ bm_form.link }}
         <br>
@@ -14,6 +24,13 @@
         <br>
         <button type="submit"><span>Save</span></button>
     </form>
-
     </div>
+<script type="text/javascript">
+    document.getElementById("input_form").style.display="none";
+    function hideshow(author)
+    {
+        document.getElementById("input_form").style.display="block";
+        document.getElementById("author").value = author;
+    }
+</script>
 {% endblock body%}

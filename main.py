@@ -84,7 +84,9 @@ def form():
             redis_store.set(link, return_title(link))
             flash('successfully added!')
             return redirect(url_for('show_bookmark', word=user))
-        return render_template('form.html', bm_form = bm_form)
+        users = redis_store.keys('user_*')
+        name = [x.decode('UTF-8')[5:] for x in users]
+        return render_template('form.html', bm_form = bm_form, author = name)
     else:
         return redirect(url_for('login'))
 
